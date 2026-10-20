@@ -27,7 +27,7 @@ public class Main {
                     addRecord();
                     break;
                 case 2:
-                    System.out.println("List records selected.");
+                    listRecords();
                     break;
                 case 3:
                     System.out.println("Search record selected.");
@@ -98,4 +98,29 @@ public class Main {
         System.out.println("Record added successfully!");
         return true;
     }
+
+    public static int listRecords() {
+        if (records.isEmpty()) {
+            System.out.println("No records found.");
+            return 0;
+        }
+
+        System.out.println("\n========== STUDENT RECORDS ==========");
+
+        System.out.printf("%-12s %-20s %-20s%n",
+                "Student ID", "Name", "Course");
+
+        System.out.println("-----------------------------------------------");
+
+        for (String[] record : records) {
+            System.out.printf("%-12s %-20s %-20s%n",
+                    record[0], record[1], record[2]);
+        }
+
+        System.out.println("-----------------------------------------------");
+        System.out.println("Total records: " + records.size());
+
+        return records.size();
+    }
+
 }
