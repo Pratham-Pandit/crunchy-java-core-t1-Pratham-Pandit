@@ -24,7 +24,7 @@ public class Main {
 
             switch (choice) {
                 case 1:
-                    System.out.println("Add record selected.");
+                    addRecord();
                     break;
                 case 2:
                     System.out.println("List records selected.");
@@ -58,5 +58,44 @@ public class Main {
         } catch (NumberFormatException e) {
             return -1;
         }
+    }
+
+    public static boolean addRecord() {
+        System.out.print("Enter student ID: ");
+        String id = scanner.nextLine().trim();
+
+        if (id.isEmpty()) {
+            System.out.println("Student ID cannot be empty.");
+            return false;
+        }
+
+        // Prevent duplicate IDs
+        for (String[] record : records) {
+            if (record[0].equalsIgnoreCase(id)) {
+                System.out.println("A record with this ID already exists.");
+                return false;
+            }
+        }
+
+        System.out.print("Enter student name: ");
+        String name = scanner.nextLine().trim();
+
+        if (name.isEmpty()) {
+            System.out.println("Student name cannot be empty.");
+            return false;
+        }
+
+        System.out.print("Enter course: ");
+        String course = scanner.nextLine().trim();
+
+        if (course.isEmpty()) {
+            System.out.println("Course cannot be empty.");
+            return false;
+        }
+
+        records.add(new String[]{id, name, course});
+
+        System.out.println("Record added successfully!");
+        return true;
     }
 }
