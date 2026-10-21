@@ -39,9 +39,18 @@ public class Main {
                         System.out.println("Student ID cannot be empty.");
                     }
                     break;
+
                 case 4:
-                    System.out.println("Delete record selected.");
+                    System.out.print("Enter student ID to delete: ");
+                    String deleteId = scanner.nextLine().trim();
+
+                    if (!deleteId.isEmpty()) {
+                        deleteRecord(deleteId);
+                    } else {
+                        System.out.println("Student ID cannot be empty.");
+                    }
                     break;
+
                 case 5:
                     System.out.println("Summary selected.");
                     break;
@@ -142,6 +151,21 @@ public class Main {
         }
 
         System.out.println("No record found with ID: " + searchId);
+        return false;
+    }
+
+    public static boolean deleteRecord(String deleteId) {
+        for (int i = 0; i < records.size(); i++) {
+            String[] record = records.get(i);
+
+            if (record[0].equalsIgnoreCase(deleteId.trim())) {
+                records.remove(i);
+                System.out.println("Record deleted successfully!");
+                return true;
+            }
+        }
+
+        System.out.println("No record found with ID: " + deleteId);
         return false;
     }
 }
