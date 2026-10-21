@@ -30,7 +30,14 @@ public class Main {
                     listRecords();
                     break;
                 case 3:
-                    System.out.println("Search record selected.");
+                    System.out.print("Enter student ID to search: ");
+                    String searchId = scanner.nextLine().trim();
+
+                    if (!searchId.isEmpty()) {
+                        searchRecord(searchId);
+                    } else {
+                        System.out.println("Student ID cannot be empty.");
+                    }
                     break;
                 case 4:
                     System.out.println("Delete record selected.");
@@ -123,4 +130,18 @@ public class Main {
         return records.size();
     }
 
+    public static boolean searchRecord(String searchId) {
+        for (String[] record : records) {
+            if (record[0].equalsIgnoreCase(searchId.trim())) {
+                System.out.println("\nRecord found!");
+                System.out.println("Student ID: " + record[0]);
+                System.out.println("Student Name: " + record[1]);
+                System.out.println("Course: " + record[2]);
+                return true;
+            }
+        }
+
+        System.out.println("No record found with ID: " + searchId);
+        return false;
+    }
 }
