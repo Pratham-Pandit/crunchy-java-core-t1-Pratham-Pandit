@@ -1,7 +1,7 @@
 ﻿# Task 1 - Java CLI Project
 
 # Student Register CLI
-- A menu-driven Java command-line application for managing student records.
+A menu-driven Java command-line application for managing student records.
 
 ## Project Details
 - **Track:** Core
