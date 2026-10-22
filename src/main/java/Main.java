@@ -52,7 +52,7 @@ public class Main {
                     break;
 
                 case 5:
-                    System.out.println("Summary selected.");
+                    showSummary();
                     break;
                 case 0:
                     System.out.println("Exiting Student Register. Goodbye!");
@@ -167,5 +167,45 @@ public class Main {
 
         System.out.println("No record found with ID: " + deleteId);
         return false;
+    }
+
+    public static int showSummary() {
+        if (records.isEmpty()) {
+            System.out.println("The register is empty.");
+            return 0;
+        }
+
+        System.out.println("\n========== REGISTER SUMMARY ==========");
+        System.out.println("Total records: " + records.size());
+
+        ArrayList<String[]> courseCounts = new ArrayList<>();
+
+        for (String[] record : records) {
+            String course = record[2];
+            boolean found = false;
+
+            for (String[] entry : courseCounts) {
+                if (entry[0].equalsIgnoreCase(course)) {
+                    int count = Integer.parseInt(entry[1]);
+                    entry[1] = String.valueOf(count + 1);
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found) {
+                courseCounts.add(new String[]{course, "1"});
+            }
+        }
+
+        System.out.println("\nRecords by course:");
+
+        for (String[] entry : courseCounts) {
+            System.out.println(entry[0] + ": " + entry[1]);
+        }
+
+        System.out.println("=======================================");
+
+        return records.size();
     }
 }
