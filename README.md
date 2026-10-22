@@ -33,3 +33,8 @@ A menu-driven Java command-line application for managing student records.
 
 ## Screenshots
 - Setup screenshots are available in the `docs/` directory.
+
+## Project Details
+- Track: Core
+- Domain: Student Register CLI
+- Variant Digit: Not assigned (no variant table provided)
